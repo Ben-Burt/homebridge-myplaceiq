@@ -1,0 +1,76 @@
+{
+  "pluginAlias": "MyPlaceIQ",
+  "pluginType": "platform",
+  "singular": false,
+  "headerDisplay": "Unofficial plugin for the Advantage Air MyPlaceIQ (Q-Hub) system. See the plugin README for how to obtain your Client ID and Client Secret from the MyPlaceIQ mobile app.",
+  "footerDisplay": "This plugin polls the hub's WebSocket API on an interval; it is not affiliated with or endorsed by Advantage Air.",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "title": "Name",
+        "type": "string",
+        "default": "MyPlaceIQ",
+        "required": true
+      },
+      "host": {
+        "title": "Hub IP Address",
+        "type": "string",
+        "placeholder": "192.168.1.171",
+        "required": true
+      },
+      "port": {
+        "title": "WebSocket Port",
+        "type": "integer",
+        "default": 8086,
+        "required": true
+      },
+      "clientId": {
+        "title": "Client ID",
+        "type": "string",
+        "required": true
+      },
+      "clientSecret": {
+        "title": "Client Secret",
+        "type": "string",
+        "required": true
+      },
+      "pollInterval": {
+        "title": "Poll Interval (seconds)",
+        "type": "integer",
+        "default": 30,
+        "minimum": 10,
+        "maximum": 300
+      },
+      "primaryZoneControlsSystem": {
+        "title": "Fold whole-system control into the non-closable zone",
+        "type": "boolean",
+        "default": true,
+        "description": "If a zone can't be independently turned off (e.g. \"Family\"), show it as the full system thermostat (Off/Heat/Cool + Dry/Fan) instead of creating a separate system accessory."
+      },
+      "showPriorityZoneSwitch": {
+        "title": "Show a Priority switch on eligible zones",
+        "type": "boolean",
+        "default": false,
+        "description": "Adds an extra HomeKit switch tile per zone for toggling priority mode. Off by default so each zone is just a single thermostat."
+      },
+      "hideDryFanSwitches": {
+        "title": "Hide the Dry/Fan mode switches",
+        "type": "boolean",
+        "default": false,
+        "description": "Removes the Dry Mode and Fan Mode switches from HomeKit entirely. Note: HomeKit's thermostat has no Dry/Fan slot, so enabling this means Dry and Fan modes become inaccessible via HomeKit (no Siri, no automations) - only Off/Heat/Cool remain controllable there."
+      }
+    }
+  },
+  "form": [
+    "name",
+    "host",
+    "port",
+    "clientId",
+    "clientSecret",
+    "pollInterval",
+    "primaryZoneControlsSystem",
+    "showPriorityZoneSwitch",
+    "hideDryFanSwitches"
+  ]
+}
