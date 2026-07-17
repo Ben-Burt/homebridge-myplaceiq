@@ -2,6 +2,15 @@
 
 All notable changes to this project are documented here.
 
+## [0.0.6]
+### Added
+- Every accessory now populates its `AccessoryInformation` service
+  (Manufacturer, Model, Serial Number, Firmware Revision) instead of showing
+  HomeKit's generic "Default-Manufacturer" / "Default-Model" placeholders.
+  Serial Number is derived from the hub's own aircon/zone ID; Firmware
+  Revision reflects the plugin's version (the MyPlaceIQ API doesn't expose
+  real hub firmware).
+
 ## [0.0.5]
 ### Added
 - `.github/FUNDING.yml` to enable GitHub's native Sponsor button (Buy Me a
