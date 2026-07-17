@@ -2,6 +2,19 @@
 
 All notable changes to this project are documented here.
 
+## [0.0.5]
+### Added
+- `.github/FUNDING.yml` to enable GitHub's native Sponsor button (Buy Me a
+  Coffee).
+- Buy Me a Coffee badge in the README.
+
+## [0.0.4]
+### Fixed
+- `config.schema.json` used an invalid `"required": true` on individual
+  properties, which is not valid JSON Schema. Required fields (`name`,
+  `host`, `port`, `clientId`, `clientSecret`) are now declared correctly via
+  a `required` array at the schema's object level.
+
 ## [0.0.3]
 ### Added
 - `hideDryFanSwitches` config option to remove the Dry Mode / Fan Mode

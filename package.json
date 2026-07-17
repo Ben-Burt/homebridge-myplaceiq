@@ -1,6 +1,6 @@
 {
   "name": "homebridge-myplaceiq",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Unofficial Homebridge plugin for the Advantage Air MyPlaceIQ (Q-Hub) system",
   "main": "index.js",
   "license": "MIT",

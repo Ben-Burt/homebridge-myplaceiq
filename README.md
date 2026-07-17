@@ -4,6 +4,12 @@
   <img src="branding/logo.png" alt="MyPlaceIQ" width="130">
 </p>
 
+<p align="center">
+  <a href="https://www.buymeacoffee.com/BenBurt">
+    <img src="https://img.shields.io/badge/Buy%20me%20a%20coffee-support-yellow?logo=buy-me-a-coffee&logoColor=white" alt="Buy Me A Coffee">
+  </a>
+</p>
+
 An unofficial Homebridge plugin for the **Advantage Air MyPlaceIQ** system (the
 "Q-Hub" generation — WebSocket API on port 8086, not the older MyPlace/MyAir
 tablet system on port 2025).

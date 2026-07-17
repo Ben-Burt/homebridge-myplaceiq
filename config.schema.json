@@ -10,30 +10,25 @@
       "name": {
         "title": "Name",
         "type": "string",
-        "default": "MyPlaceIQ",
-        "required": true
+        "default": "MyPlaceIQ"
       },
       "host": {
         "title": "Hub IP Address",
         "type": "string",
-        "placeholder": "192.168.1.171",
-        "required": true
+        "placeholder": "192.168.1.171"
       },
       "port": {
         "title": "WebSocket Port",
         "type": "integer",
-        "default": 8086,
-        "required": true
+        "default": 8086
       },
       "clientId": {
         "title": "Client ID",
-        "type": "string",
-        "required": true
+        "type": "string"
       },
       "clientSecret": {
         "title": "Client Secret",
-        "type": "string",
-        "required": true
+        "type": "string"
       },
       "pollInterval": {
         "title": "Poll Interval (seconds)",
@@ -60,7 +55,8 @@
         "default": false,
         "description": "Removes the Dry Mode and Fan Mode switches from HomeKit entirely. Note: HomeKit's thermostat has no Dry/Fan slot, so enabling this means Dry and Fan modes become inaccessible via HomeKit (no Siri, no automations) - only Off/Heat/Cool remain controllable there."
       }
-    }
+    },
+    "required": ["name", "host", "port", "clientId", "clientSecret"]
   },
   "form": [
     "name",
