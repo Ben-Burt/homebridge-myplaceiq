@@ -5,7 +5,7 @@ Issues and pull requests are welcome.
 ## Development setup
 
 ```bash
-git clone https://github.com/<YOUR_GITHUB_USERNAME>/homebridge-myplaceiq.git
+git clone https://github.com/Ben-Burt/homebridge-myplaceiq.git
 cd homebridge-myplaceiq
 npm install
 ```

@@ -4,14 +4,14 @@
   "description": "Unofficial Homebridge plugin for the Advantage Air MyPlaceIQ (Q-Hub) system",
   "main": "index.js",
   "license": "MIT",
-  "author": "<YOUR NAME OR GITHUB USERNAME>",
-  "homepage": "https://github.com/<YOUR_GITHUB_USERNAME>/homebridge-myplaceiq#readme",
+  "author": "Ben Burt",
+  "homepage": "https://github.com/Ben-Burt/homebridge-myplaceiq#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/<YOUR_GITHUB_USERNAME>/homebridge-myplaceiq.git"
+    "url": "https://github.com/Ben-Burt/homebridge-myplaceiq.git"
   },
   "bugs": {
-    "url": "https://github.com/<YOUR_GITHUB_USERNAME>/homebridge-myplaceiq/issues"
+    "url": "https://github.com/Ben-Burt/homebridge-myplaceiq/issues"
   },
   "keywords": [
     "homebridge-plugin",
