@@ -38,7 +38,8 @@ author) did the actual hard part — please consider starring it too.
   independently turned off (the hub reports `isClickable: false` — typically
   a zone like "Family" that always stays open), that zone's accessory is
   upgraded to a full **Thermostat** with Off/Heat/Cool + target temperature,
-  plus a **"Dry Mode"** and **"Fan Mode"** switch (HomeKit's thermostat has no
+  plus a **"Dry Mode"** switch and a **"Fan Mode"** fan tile (HomeKit's
+  thermostat has no
   native dry/fan-only mode, so — like the equivalent `homebridge-myplace`
   plugin for the older MyAir/MyPlace API — those are exposed as separate
   switches). In this case there's **no separate generic system accessory** —

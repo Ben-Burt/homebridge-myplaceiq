@@ -2,6 +2,14 @@
 
 All notable changes to this project are documented here.
 
+## [0.0.7]
+### Changed
+- Fan Mode is now a proper `Fanv2` HomeKit service instead of a generic
+  `Switch`, giving it the correct fan icon/tile in the Home app rather than
+  a plain toggle. Behavior is unchanged (on = fan-only mode, off = system
+  off). A `Switch`-based Fan Mode service left over from an older version
+  of the plugin is automatically cleaned up on upgrade.
+
 ## [0.0.6]
 ### Added
 - Every accessory now populates its `AccessoryInformation` service
