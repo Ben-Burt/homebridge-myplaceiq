@@ -2,6 +2,36 @@
 
 All notable changes to this project are documented here.
 
+## [0.0.8]
+### Fixed
+- Every request to the hub (startup discovery, the regular poll timer, and
+  post-command refreshes) now shares a single mutex, so at most one request
+  is ever in flight at a time. Previously, each command scheduled its own
+  independent follow-up poll with no coordination between them - if several
+  commands landed close together (e.g. the Home app re-syncing multiple
+  accessories at once), this could open several simultaneous connections to
+  the hub. The hub is a small embedded device that doesn't handle concurrent
+  WebSocket requests gracefully, which showed up as intermittent
+  `Timed out waiting for response` and `Incomplete response... (missing
+  aircons/zones)` errors, and accessories going to "No Response" in the
+  Home app.
+- Zone thermostats no longer use "Auto" to represent an open/on zone.
+  HomeKit's Home app renders a thermostat whose valid states skip over
+  Heat/Cool (Off + Auto only) oddly - it splits into a separate temperature
+  tile plus a switch-style tile, and that switch tile is prone to showing
+  "No Response" even though nothing is actually wrong. Zones now represent
+  "on" as whichever of Heat/Cool the parent system is actually running
+  (updated dynamically if the system's mode changes), which renders as a
+  normal single thermostat control. The command sent to the hub is
+  unchanged - still a simple open/close - only the HomeKit-facing state
+  representation changed.
+### Changed
+- README Installation section restructured: Config UI X plugin search is
+  now the primary/recommended method (the plugin is published on npm and
+  discoverable there), with the npm CLI and from-source installs kept as
+  documented backup options. Previously the docs still read as if the
+  package wasn't published yet.
+
 ## [0.0.7]
 ### Changed
 - Fan Mode is now a proper `Fanv2` HomeKit service instead of a generic

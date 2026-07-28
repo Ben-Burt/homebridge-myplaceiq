@@ -30,7 +30,7 @@ author) did the actual hard part — please consider starring it too.
 
 ## What you get in HomeKit
 
-- One **Thermostat** per zone — Off / Auto (zones only open or close a duct;
+- One **Thermostat** per zone — Off, plus whichever of Heat/Cool the system is actually running (zones only open or close a duct;
   they inherit heat/cool/dry mode from the parent system), plus current and
   target temperature. Just the one tile per zone — no extra switch — unless
   you turn on `showPriorityZoneSwitch` (see below).
@@ -46,7 +46,7 @@ author) did the actual hard part — please consider starring it too.
   the non-closable zone *is* the system control, which matches how it
   actually behaves on the hub. Turn this off with
   `"primaryZoneControlsSystem": false` if you'd rather have both a plain
-  Off/Auto zone tile and a standalone system accessory.
+  Off/Heat-or-Cool zone tile and a standalone system accessory.
 - Set `"hideDryFanSwitches": true` to remove the Dry Mode / Fan Mode switches
   from HomeKit entirely, if you'd rather have just the plain Off/Heat/Cool
   thermostat and don't need Dry/Fan reachable from HomeKit at all. **Trade-off:**
@@ -58,7 +58,7 @@ author) did the actual hard part — please consider starring it too.
 - If none of a system's zones are non-closable (or the option above is
   disabled), you instead get one plain **Thermostat** accessory for the whole
   aircon system (Off/Heat/Cool + target temperature) plus its own Dry/Fan
-  switches, and every zone is a normal Off/Auto Thermostat.
+  switches, and every zone is a normal Off/Heat-or-Cool Thermostat.
 - An optional **"Priority"** switch per zone (only for zones where the hub
   reports `isPriorityZoneAllowed`), off by default — enable with
   `"showPriorityZoneSwitch": true` if you want it back as a second tile.
@@ -70,26 +70,41 @@ hub](#how-it-talks-to-the-hub) below).
 
 ## Installation
 
-1. Copy this folder onto your Homebridge machine, e.g. into
-   `~/.homebridge/homebridge-myplaceiq/` (or, once published, `npm install -g homebridge-myplaceiq`).
-2. From inside that folder, install dependencies:
+**Option 1 (recommended): via Homebridge Config UI X**
+
+1. Open the Homebridge UI and go to the **Plugins** tab
+2. Search for `MyPlaceIQ`
+3. Click **Install** on `homebridge-myplaceiq`
+4. Once installed, click **Settings** on the plugin card and fill in your hub's details (see [Configuration](#configuration) below) — the UI gives you a proper form generated from `config.schema.json`, no manual JSON editing needed
+5. Restart Homebridge when prompted
+
+**Option 2: via npm CLI**
+
+```bash
+npm install -g homebridge-myplaceiq
+```
+Then add the platform block to your Homebridge `config.json` by hand (see [Configuration](#configuration)), and restart Homebridge.
+
+**Option 3: from source (for development, or to try an unreleased change)**
+
+1. Clone or download this repo onto your Homebridge machine
+2. From inside that folder:
    ```bash
    npm install
-   ```
-3. If you're not installing a published package, tell Homebridge where to
-   find it by installing it globally:
-   ```bash
-   npm install -g /path/to/homebridge-myplaceiq
+   npm install -g .
    ```
    Make sure this lands in whatever `node_modules` path your specific
    Homebridge install actually resolves plugins from — this varies between a
    manually-run Homebridge, `hb-service`-managed installs, and Docker images.
    If in doubt, run `homebridge -D` and check the plugin search paths it logs
    on startup.
+3. Add the platform block to `config.json` and restart Homebridge.
 
 ## Configuration
 
-Add a platform block to your Homebridge `config.json`:
+If you installed via Config UI X (Option 1 above), use its **Settings** form
+instead of editing JSON by hand — the fields below map directly to it. For
+Options 2/3, add a platform block to your Homebridge `config.json` directly:
 
 ```json
 {
@@ -106,9 +121,6 @@ Add a platform block to your Homebridge `config.json`:
   ]
 }
 ```
-
-If you're running the Homebridge Config UI, `config.schema.json` gives you a
-proper settings form instead — no manual JSON editing needed.
 
 | Field          | Required | Default | Notes                                             |
 |----------------|----------|---------|----------------------------------------------------|
