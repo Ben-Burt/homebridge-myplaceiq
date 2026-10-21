@@ -54,6 +54,19 @@
         "type": "boolean",
         "default": false,
         "description": "Removes the Dry Mode and Fan Mode switches from HomeKit entirely. Note: HomeKit's thermostat has no Dry/Fan slot, so enabling this means Dry and Fan modes become inaccessible via HomeKit (no Siri, no automations) - only Off/Heat/Cool remain controllable there."
+      },
+      "logChangesToConsole": {
+        "title": "Also show changes in the Homebridge log",
+        "type": "boolean",
+        "default": false,
+        "description": "Changes are always written to daily files in <Homebridge storage>/myplaceiq-logs/. Turn this on to also print each change in the Homebridge log console."
+      },
+      "changeLogRetentionDays": {
+        "title": "Keep change log files for (days)",
+        "type": "integer",
+        "default": 30,
+        "minimum": 1,
+        "maximum": 365
       }
     },
     "required": ["name", "host", "port", "clientId", "clientSecret"]
@@ -67,6 +80,8 @@
     "pollInterval",
     "primaryZoneControlsSystem",
     "showPriorityZoneSwitch",
-    "hideDryFanSwitches"
+    "hideDryFanSwitches",
+    "logChangesToConsole",
+    "changeLogRetentionDays"
   ]
 }

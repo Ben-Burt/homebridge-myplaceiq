@@ -2,6 +2,19 @@
 
 All notable changes to this project are documented here.
 
+## [0.0.10]
+### Added
+- Change log. Every change is written to a daily file
+  (`<Homebridge storage>/myplaceiq-logs/changes-YYYY-MM-DD.log`, e.g.
+  `/var/lib/homebridge/myplaceiq-logs/`) and files older than 30 days are
+  deleted automatically (`changeLogRetentionDays`, 1-365). It records
+  commands sent because of HomeKit actions (Home app, Siri, automations) and
+  changes seen on the hub between polls, labelled as confirmed (they follow a
+  HomeKit command) or changed outside HomeKit (MyPlaceIQ app, wall panel, or
+  the system itself). HomeKit does not tell a plugin which person made a
+  change, so the person is not recorded.
+- `logChangesToConsole` option to also print each change in the Homebridge log.
+
 ## [0.0.9]
 ### Changed
 - Zone thermostats are back to **Off / Auto** (open / closed). 0.0.8 had

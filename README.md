@@ -134,6 +134,30 @@ Options 2/3, add a platform block to your Homebridge `config.json` directly:
 | `primaryZoneControlsSystem` | no | `true` | Fold whole-system control into a non-closable zone instead of a separate system accessory |
 | `showPriorityZoneSwitch` | no | `false` | Show an extra Priority switch tile on eligible zones |
 | `hideDryFanSwitches` | no | `false` | Remove the Dry/Fan switches from HomeKit entirely (loses HomeKit access to those modes - see note above) |
+| `logChangesToConsole` | no | `false` | Also print each change in the Homebridge log (changes are always written to the change log files - see below) |
+| `changeLogRetentionDays` | no | `30` | How long change log files are kept (1-365 days) |
+
+### Change log
+
+Every change is recorded in daily files in your Homebridge storage folder
+(on hb-service installs: `/var/lib/homebridge/myplaceiq-logs/changes-YYYY-MM-DD.log`).
+Files older than `changeLogRetentionDays` (default 30) are deleted
+automatically. Example:
+
+```
+2026-10-22 10:20:41 +11:00 | HomeKit | Bedroom 2: set Off (closed)
+2026-10-22 10:20:45 +11:00 | hub (confirmed) | Bedroom 2: power on -> off
+2026-10-22 14:02:10 +11:00 | hub (changed outside HomeKit) | Family: mode cool -> heat
+```
+
+- **HomeKit** lines are commands sent because of a Home app, Siri or automation action.
+- **hub (confirmed)** lines are changes the hub reported shortly after such a command.
+- **hub (changed outside HomeKit)** lines are changes seen between polls that did not follow a HomeKit command: the MyPlaceIQ app, a wall panel, or the system itself (for example closing a zone that got too hot or cold).
+
+HomeKit does not tell a plugin *who* made a change, so the person is not
+recorded, and changes are detected at the poll interval, so very quick
+back-and-forth changes between polls can be missed. Turn on
+`logChangesToConsole` to see the same lines in the Homebridge log.
 
 ### Getting your Client ID and Client Secret
 
