@@ -30,9 +30,11 @@ author) did the actual hard part — please consider starring it too.
 
 ## What you get in HomeKit
 
-- One **Thermostat** per zone — Off, plus whichever of Heat/Cool the system is actually running (zones only open or close a duct;
-  they inherit heat/cool/dry mode from the parent system), plus current and
-  target temperature. Just the one tile per zone — no extra switch — unless
+- One **Thermostat** per zone — **Auto** (zone open) or **Off** (zone closed). Zones only
+  open or close a duct; heat/cool/dry/fan is chosen on the primary zone or the
+  aircon unit, never per zone. The dial's current-state ring still shows
+  whether the zone is actually heating or cooling right now. Each zone also has
+  current and target temperature. Just the one tile per zone — no extra switch — unless
   you turn on `showPriorityZoneSwitch` (see below).
 - **Non-closable zones become the system control.** If a zone can't be
   independently turned off (the hub reports `isClickable: false` — typically
@@ -46,7 +48,7 @@ author) did the actual hard part — please consider starring it too.
   the non-closable zone *is* the system control, which matches how it
   actually behaves on the hub. Turn this off with
   `"primaryZoneControlsSystem": false` if you'd rather have both a plain
-  Off/Heat-or-Cool zone tile and a standalone system accessory.
+  Off/Auto zone tile and a standalone system accessory.
 - Set `"hideDryFanSwitches": true` to remove the Dry Mode / Fan Mode switches
   from HomeKit entirely, if you'd rather have just the plain Off/Heat/Cool
   thermostat and don't need Dry/Fan reachable from HomeKit at all. **Trade-off:**
@@ -58,7 +60,7 @@ author) did the actual hard part — please consider starring it too.
 - If none of a system's zones are non-closable (or the option above is
   disabled), you instead get one plain **Thermostat** accessory for the whole
   aircon system (Off/Heat/Cool + target temperature) plus its own Dry/Fan
-  switches, and every zone is a normal Off/Heat-or-Cool Thermostat.
+  switches, and every zone is a normal Off/Auto Thermostat.
 - An optional **"Priority"** switch per zone (only for zones where the hub
   reports `isPriorityZoneAllowed`), off by default — enable with
   `"showPriorityZoneSwitch": true` if you want it back as a second tile.

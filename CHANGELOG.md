@@ -2,6 +2,16 @@
 
 All notable changes to this project are documented here.
 
+## [0.0.9]
+### Changed
+- Zone thermostats are back to **Off / Auto** (open / closed). 0.0.8 had
+  swapped Auto for whichever of Heat/Cool the system was running, which made
+  zones look like they could pick heat or cool on their own. They can't:
+  heat/cool/dry/fan is set on the primary zone or the aircon unit only. The
+  current-state ring on each zone still shows Heat or Cool to reflect what
+  the system is actually doing in that zone. The command sent to the hub is
+  unchanged (open/close the zone).
+
 ## [0.0.8]
 ### Fixed
 - Every request to the hub (startup discovery, the regular poll timer, and
